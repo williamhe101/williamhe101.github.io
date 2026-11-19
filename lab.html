@@ -1,0 +1,114 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Lab · William's Corner</title>
+<meta name="description" content="Interactive 3D demos from signal integrity, my senior design robot, a smart mirror and an e-ink Pokémon display.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=17">
+<script src="script.js?v=17"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="lab3d.js?v=17"></script>
+<script src="lab3d-trace.js?v=17"></script>
+<script src="lab3d-eink.js?v=17"></script>
+<script src="lab.js?v=17"></script>
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="index.html">William's Corner</a>
+  <nav>
+    <a class="link" href="index.html">Home</a>
+    <a class="link" href="projects.html">Projects</a>
+    <a class="link" href="blog.html">Blog</a>
+    <a class="link active" href="lab.html">Lab</a>
+    <button id="theme-toggle" type="button" aria-label="Toggle light and dark theme">🌙 Dark</button>
+  </nav>
+</div></header>
+
+<main><div class="wrap">
+  <h1>The <span class="grad">Lab</span> 🧪</h1>
+  <p class="lead">Welcome to the lab. Six things to poke at, watch or hover over. They're simplified models and toys, not real design data, but the ideas behind them are very real.</p>
+
+  <h2>1 · Reflections on a PCB trace (3D)</h2>
+  <div class="card demo">
+    <p>Meet a bit on a very short commute. Add a via stub, a dead-end piece of trace, and the bit splits up: an <b>inverted</b> reflection runs back toward the source, while a delayed copy comes back out of the stub's open end. Everything bounces off the source again and shows up at the receiver as <b>echoes</b>, the ghosts that keep signal integrity engineers employed. Drag to look around.</p>
+    <canvas id="trace" style="height:380px" aria-label="3D PCB trace with bits travelling along it, reflecting off a via stub and echoing back from the source"></canvas>
+    <canvas id="rxscope" style="height:120px" aria-label="Receiver voltage over time showing bits and their echoes"></canvas>
+    <div class="legend"><span><b style="background:#2ef2b0"></b>bit</span><span><b style="background:#6ea8ff"></b>inverted reflection (negative)</span><span><b style="background:#ff7a59"></b>delayed reflection</span><span><b style="background:#ffc14d"></b>echo / stub copy (positive)</span><span><b style="background:#fff"></b>waves overlapping</span></div>
+    <div class="controls"><button type="button" id="trace-stub" class="pill">Add a via stub</button></div>
+  </div>
+
+  <h2>2 · Equalization opens a closed eye</h2>
+  <div class="card demo">
+    <p>An eye diagram is basically a link's report card, and right now this one is failing. A lossy channel smears bits into each other until the eye slams shut. Switch on <b>CTLE</b>, <b>FFE</b> and <b>DFE</b>, the same tools I use at work, and watch the rainbow untangle.</p>
+    <canvas id="eq" aria-label="Rainbow eye diagram that opens as equalization is enabled"></canvas>
+    <div class="controls">
+      <label class="check"><input type="checkbox" id="eq-ctle"> CTLE</label>
+      <label class="check"><input type="checkbox" id="eq-ffe"> FFE</label>
+      <label class="check"><input type="checkbox" id="eq-dfe"> DFE</label>
+    </div>
+    <p class="readout mono" id="eq-out"></p>
+  </div>
+
+  <h2>3 · Crosstalk and spacing</h2>
+  <div class="card demo">
+    <p>Traces make terrible neighbors: every time the loud one switches, the quiet one hears about it. The top view shows the noise, and the cross-section shows <b>why</b>. Drag the slider to pull them apart and watch the field rings fade, or flip the checkbox to hide the full EM field if it gets too busy.</p>
+    <canvas id="xtalk" aria-label="Crosstalk spikes on a victim trace next to an aggressor"></canvas>
+    <canvas id="xsec" style="height:210px" aria-label="Cross-section of two PCB traces with coupling field lines"></canvas>
+    <div class="controls">
+      <label>Spacing <input id="xt-sp" type="range" min="1" max="5" step="0.1" value="1.5"></label>
+      <label class="check"><input type="checkbox" id="xt-field" checked> Show the full EM field</label>
+    </div>
+    <p class="readout mono" id="xt-out"></p>
+  </div>
+
+  <h2>4 · DormPod: my senior design project (3D)</h2>
+  <div class="card demo">
+    <p>My senior design project, as a short film. The pod pulls up to the <b>curb</b>, rolls into the dorm and scans the hallway with <b>lidar</b>. It reads <b>AprilTags</b> on the wall to find the right door, pops its lid and drops the package in Room B. No remote control, no hands: just sit back and watch it do its job.</p>
+    <div class="stage">
+      <canvas id="pod" style="height:460px" aria-label="Cinematic 3D animation of a delivery robot driving from a curb into a dorm hallway using lidar and AprilTags"></canvas>
+      <div class="hud" id="pod-hud">arrived at the curb · packages loaded</div>
+    </div>
+    <p class="readout mono" id="pod-log"></p>
+  </div>
+
+  <h2>5 · Magic Mirror</h2>
+  <div class="card demo">
+    <p>My smart mirror, set up the way most people do. Hit the power button: a compliment fades out of the glass first (it's the mirror's job to be nice to you), then the clock, weather and a rotating set of everyday modules. Everything shown is demo data.</p>
+    <div class="mirror-wrap">
+      <div class="mirror" id="mirror">
+        <div class="m-reflect"></div>
+        <div class="m-mod m-tl">
+          <div class="m-time" id="mirror-time">--:--</div>
+          <div class="m-sub" id="mirror-date"></div>
+        </div>
+        <div class="m-mod m-tr">
+          <div class="m-temp">☀️ 72°</div>
+          <div class="m-sub">Austin, TX · clear</div>
+          <div class="m-fc"><span>Fri 74°</span><span>Sat 71°</span></div>
+        </div>
+        <div class="m-center" id="mirror-news"></div>
+        <div class="m-mod m-bottom"><div class="m-scene" id="mirror-scene"></div></div>
+        <div class="m-foot">demo data · not real quotes</div>
+      </div>
+      <div class="controls"><button type="button" id="mirror-toggle" class="pill">Turn the mirror on</button></div>
+    </div>
+  </div>
+
+  <h2>6 · E-ink Pokémon card display (3D)</h2>
+  <div class="card demo">
+    <p>Old Kindle and Nook e-readers deserve better than a drawer, so I'm turning them into <b>e-ink Pok&eacute;mon card displays</b>. This one is a 3D Kindle 4, the 2011 model. <b>Hover left to right</b> to flip through cards, then be patient: real e-ink flashes, develops the new card in steps and leaves a faint ghost of the last one.</p>
+    <div class="stage">
+      <canvas id="eink" style="height:480px" aria-label="3D e-reader displaying Pokémon cards with an e-ink refresh effect"></canvas>
+    </div>
+    <div id="eink-dots"><i class="on"></i><i></i><i></i></div>
+    <p class="meta" style="text-align:center;margin-top:10px">Card images from the <a href="https://pokemontcg.io" target="_blank" rel="noopener">Pokémon TCG API</a>. Pokémon and card artwork © Nintendo, Creatures Inc., GAME FREAK. Shown here for a personal hobby project.</p>
+  </div>
+</div></main>
+
+<footer class="site"><div class="wrap">Built for fun · <span class="mono">eye open ✓</span> · © William He</div></footer>
+</body>
+</html>

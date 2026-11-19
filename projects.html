@@ -1,0 +1,103 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects · William's Corner</title>
+<meta name="description" content="Things I've built and tested.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=17">
+<script src="script.js?v=17"></script>
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="index.html">William's Corner</a>
+  <nav>
+    <a class="link" href="index.html">Home</a>
+    <a class="link active" href="projects.html">Projects</a>
+    <a class="link" href="blog.html">Blog</a>
+    <a class="link" href="lab.html">Lab</a>
+    <button id="theme-toggle" type="button" aria-label="Toggle light and dark theme">🌙 Dark</button>
+  </nav>
+</div></header>
+
+<main><div class="wrap">
+  <h1>Things I've <span class="grad">built</span> 🛠️</h1>
+  <p class="lead">Robots, mirrors, AR apps and a few gadgets. Tap a filter, and hover a card to see it wiggle.</p>
+
+  <div class="filters">
+    <button type="button" class="active" data-filter="all">All</button>
+    <button type="button" data-filter="hardware">Hardware</button>
+    <button type="button" data-filter="robotics">Robotics</button>
+    <button type="button" data-filter="software">Software</button>
+  </div>
+
+  <div class="cards two">
+    <div class="card tilt project reveal" data-cat="robotics hardware">
+      <span class="emoji">🤖</span><br>
+      <span class="tag t-robotics">Robotics</span><span class="tag">Hardware</span>
+      <h3>DormPod</h3>
+      <p class="meta">Senior design · JPods / City of Plano · 2023</p>
+      <p>An autonomous last-mile delivery robot, built as my senior design project with JPods and the City of Plano. It combines sensor fusion, motor control and safety systems, follows JSON maps, and coordinates with other pods over MQTT. We built small-scale and full-scale versions and moved from 3D-printed parts to a custom PCB.</p>
+      <p class="meta"><a href="lab.html">Watch it in 3D →</a></p>
+    </div>
+
+    <div class="card tilt project reveal" data-cat="hardware">
+      <span class="emoji">🫶</span><br>
+      <span class="tag">Hardware</span>
+      <h3>Sensor compression device</h3>
+      <p class="meta">EPICS / Autism Treatment Center · 2021</p>
+      <p>A medical-grade prototype built with the Autism Treatment Center: a cuff, a bit like a blood pressure cuff, that squeezes on remote command to give soothing, therapeutic touch. I took it through the whole hardware cycle, from picking components to 3D-printing the enclosures and laying out the PCB for the control system.</p>
+    </div>
+
+    <div class="card tilt project reveal" data-cat="hardware software">
+      <span class="emoji">🪞</span><br>
+      <span class="tag">Hardware</span><span class="tag t-software">Software</span>
+      <h3>Magic Mirror</h3>
+      <p class="meta">Murata Electronics · 2022</p>
+      <p>A customizable smart mirror with Wi-Fi and Bluetooth, built around a Raspberry Pi and Murata components. It pulls live weather, news and calendar data through APIs. The idea had been on my mind for four years before I pitched it to Murata, got it sponsored, and started building a prototype for their Dallas office.</p>
+      <p class="meta"><a href="post-murata.html">Read the story →</a></p>
+    </div>
+
+    <div class="card tilt project reveal" data-cat="software">
+      <span class="emoji">🥽</span><br>
+      <span class="tag t-software">Software</span>
+      <h3>AR product viewer</h3>
+      <p class="meta">Dell Technologies · 2022</p>
+      <p>An augmented reality app I built during my Dell internship for visualizing products, using real-time rendering and tracking with the iOS AR development kit. It won 1st place at Dell's hackathon, was rolled out across 7+ business units, and Dell's marketing team kept developing it.</p>
+    </div>
+
+    <div class="card tilt project reveal" data-cat="hardware">
+      <span class="emoji">📲</span><br>
+      <span class="tag">Hardware</span>
+      <h3>NFC boards</h3>
+      <p class="meta">Murata Electronics</p>
+      <p>It started with a tiny Nordic Semiconductor board whose copper coil could open a website on your phone. That hooked me on NFC, and I ended up testing and configuring real NFC PCB boards by hand. Full write-up coming soon.</p>
+    </div>
+
+    <div class="card tilt project reveal" data-cat="hardware">
+      <span class="emoji">📶</span><br>
+      <span class="tag">Hardware</span>
+      <h3>LTE signal testing</h3>
+      <p class="meta">Murata Electronics · 2022</p>
+      <p>Three weeks of running an LTE transmitter device through signal-strength tests that logged its performance throughout the day, with careful documentation of every result along the way. Full write-up coming soon.</p>
+    </div>
+
+    <div class="card tilt project reveal" data-cat="hardware software">
+      <span class="emoji">📖</span><br>
+      <span class="tag">Hardware</span><span class="tag t-software">Software</span>
+      <h3>E-ink Pokémon cards</h3>
+      <p class="meta">Side project</p>
+      <p>Old Kindle and Nook e-readers get a second life as e-ink displays for Pokémon cards. E-ink is paper-like, glare-free and always on, so a collection can sit on a shelf and swap cards with a swipe instead of gathering dust in a drawer.</p>
+      <p class="meta"><a href="lab.html">See it in 3D →</a></p>
+    </div>
+  </div>
+
+  <p class="note reveal" style="margin-top:32px">More projects will show up here as I add them. ✨</p>
+</div></main>
+
+<footer class="site"><div class="wrap">Built for fun · <span class="mono">eye open ✓</span> · © William He</div></footer>
+</body>
+</html>

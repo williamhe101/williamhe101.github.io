@@ -1,0 +1,219 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>William's Corner</title>
+<meta name="description" content="Projects, work history and a blog from William He, signal integrity engineer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=17">
+<script src="script.js?v=17"></script>
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="index.html">William's Corner</a>
+  <nav>
+    <a class="link active" href="index.html">Home</a>
+    <a class="link" href="projects.html">Projects</a>
+    <a class="link" href="blog.html">Blog</a>
+    <a class="link" href="lab.html">Lab</a>
+    <button id="theme-toggle" type="button" aria-label="Toggle light and dark theme">🌙 Dark</button>
+  </nav>
+</div></header>
+
+<main><div class="wrap">
+
+  <section class="hero">
+    <p class="eyebrow mono">Austin, TX · <span id="typed" data-words="signal integrity engineer|PCB debugger|pickleball player|nonfiction nerd|hackathon organizer"></span><span class="caret"></span></p>
+    <h1>Hey, I'm <span class="grad">William</span> <span class="wave" title="Click me!">👋</span></h1>
+    <p class="lead">I make sure fast signals get where they're going in one piece. Right now that's on MacBooks at Apple, and on the side I build random hardware. This is my corner of the internet for all of it.</p>
+    <div class="btns">
+      <a class="btn primary" href="projects.html">See my projects</a>
+      <a class="btn" href="blog.html">Read the blog</a>
+      <a class="btn" href="lab.html">Play in the Lab 🧪</a>
+    </div>
+
+    <div class="scope reveal">
+      <div class="scope-bar mono">
+        <span>● CH1 · live eye diagram</span>
+        <span class="mode">Mode: <button type="button" data-mode="nrz" class="on">NRZ</button><button type="button" data-mode="pam4">PAM4</button></span>
+      </div>
+      <div class="scope-screen"><canvas id="eye" aria-label="Animated eye diagram. Move the pointer across it to add noise."></canvas></div>
+      <div class="scope-foot mono">
+        <span id="eye-mode">NRZ · 32 GT/s</span>
+        <span>Eye opening: <b id="eye-open">78%</b></span>
+        <span>Est. BER: <b id="eye-ber">&lt; 1e-12 ✅</b></span>
+      </div>
+    </div>
+    <p class="hint">👆 That's an eye diagram, how engineers judge a high-speed link. Slide your mouse across it to add noise and watch the eye close. Try PAM4: more levels, much less margin.</p>
+  </section>
+
+  <div class="stats">
+    <div class="stat reveal"><div class="num"><span class="count" data-to="64">0</span></div><div class="lbl">GT/s PAM4: PCIe Gen6 SI sign-off on server platforms</div></div>
+    <div class="stat reveal"><div class="num">16.5h → 1h</div><div class="lbl">simulation campaign time after corner and sensitivity studies</div></div>
+    <div class="stat reveal"><div class="num"><span class="count" data-to="20" data-prefix="$" data-suffix="K">0</span></div><div class="lbl">in sponsorships from 7 companies for the hackathon I co-founded</div></div>
+    <div class="stat reveal"><div class="num"><span class="count" data-to="290" data-suffix="+">0</span></div><div class="lbl">people at the hackathon I co-founded</div></div>
+  </div>
+
+  <section class="story" id="story" aria-label="Scroll story: a 3D point cloud that morphs through my work">
+    <div class="story-pin">
+      <canvas aria-hidden="true"></canvas>
+      <div class="story-ui">
+        <div class="story-top">
+          <span class="micro">[ POINT CLOUD · 1,600 PTS ]</span>
+          <span class="micro" id="story-idx">01 / 04</span>
+        </div>
+        <div class="story-mid">
+          <div id="story-copy" class="story-copy">
+            <div class="story-big"><span id="story-num">64</span><span class="story-unit micro" id="story-unit">GT/s PAM4</span></div>
+            <span class="micro" id="story-tag">[ SIGNAL ]</span>
+            <p id="story-text">PCIe Gen6 sign-off: keeping a 64 GT/s PAM4 eye open across real server boards.</p>
+          </div>
+        </div>
+        <div class="story-bottom">
+          <span class="micro">SCROLL · MOVE YOUR MOUSE TO TILT</span>
+          <div class="story-track"><i id="story-bar"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <h2 class="reveal">About me</h2>
+  <p class="reveal">I studied Electrical Engineering at UT Dallas (B.S., Dec 2023) and have been in hardware ever since: RF at Murata, servers at Dell, high-speed channels at AMD, and now MacBooks at Apple. Outside of work I like pickleball, gaming, reading random nonfiction books, and anything psychology.</p>
+  <ul class="chips reveal" style="margin-top:16px">
+    <li>📡 Signal integrity</li>
+    <li>🔧 Hardware</li>
+    <li>🌐 IoT</li>
+    <li>🏓 Pickleball</li>
+    <li>🎮 Gaming</li>
+    <li>📚 Nonfiction books</li>
+    <li>🧠 Psychology</li>
+  </ul>
+
+  <h2 class="reveal">Work history</h2>
+  <button id="expand-all" class="expand-all" type="button">Expand all</button>
+  <div class="timeline">
+
+    <div class="t-item reveal" data-emoji="🍎">
+      <details open>
+        <summary>
+          <h3>Signal Integrity Engineer (Systems Engineer) · Apple</h3>
+          <span class="meta">Austin, TX · Aug 2026 – present</span>
+        </summary>
+        <div class="t-body"><ul>
+          <li>System-level SI design, analysis and validation for Mac across high-speed I/O (USB4/Thunderbolt, PCIe, DisplayPort, HDMI), plus LPDDR memory and GPIO/low-speed control interfaces.</li>
+          <li>Channel modeling and link simulation in HFSS, SIwave and ADS; evaluate equalization and eye margin for NRZ and PAM4.</li>
+          <li>Review PCB and flex layouts for impedance control and return-path continuity, and correlate against VNA/TDR measurements.</li>
+        </ul></div>
+      </details>
+    </div>
+
+    <div class="t-item reveal" data-emoji="🔴">
+      <details>
+        <summary>
+          <h3>Signal Integrity and System Design Hardware Engineer · AMD</h3>
+          <span class="meta">Intern Sept 2022 – Dec 2023 · Full-time Feb 2024 – Aug 2026</span>
+        </summary>
+        <div class="t-body"><ul>
+          <li>Supported PCIe Gen6 (64 GT/s PAM4) SI sign-off on EPYC server platforms across four board topologies and two silicon milestones, covering twelve link directions.</li>
+          <li>Performed comprehensive analysis of channel features and topologies for implementation in Turin, Genoa and Venice server platforms.</li>
+          <li>Correlated a supplier card-edge connector model in HFSS to 32 GHz across six differential pairs, agreeing within 5 Ω on impedance, and root-caused a 0.06 mm mating gap that invalidated the geometry.</li>
+          <li>Optimized HDI via transitions across four routing layers to meet return loss at all three Nyquist points to 64 GHz, and authored the pad/antipad design guide for layout.</li>
+          <li>Ran corner and sensitivity studies that cut a channel-simulation campaign from 16.5 hours to 1 hour, with eye-height drift bounded under 3.5%.</li>
+          <li>Closed an intra-pair skew violation the layout tool's constraint manager had passed, bringing all lanes to about 1/5 of the spec limit.</li>
+          <li>Co-authored a 2D segmented DDR5 modeling method that matches full-wave eye margin within 5 mV and 3 ps without a layout file.</li>
+          <li>Built an automated channel-simulation QA tool that scores eye metrics, insertion loss and defect rate per lane and ranks equalization presets, replacing a manual screenshot workflow.</li>
+          <li>Reviewed three platform boards against the design guide and wrote custom DRC checks for differential-pair spacing and connector keepout.</li>
+          <li>Led development of a Signal/Power Integrity Platform Design Guide that set layout constraints and design standards adopted across multiple board revisions and engineering teams.</li>
+          <li>Extracted high-fidelity electromagnetic models for EPYC server platforms in HFSS, Q2D and Q3D to reduce crosstalk and impedance discontinuities on high-speed interfaces like XGMI and DDR5.</li>
+        </ul></div>
+      </details>
+    </div>
+
+    <div class="t-item reveal" data-emoji="🔵">
+      <details>
+        <summary>
+          <h3>Server Hardware Intern · Dell Technologies</h3>
+          <span class="meta">Austin, TX · Jun 2022 – Aug 2022</span>
+        </summary>
+        <div class="t-body"><ul>
+          <li>Prototyped an RS232 interface serializing UART over a single-wire bidirectional link, reducing server I/O count.</li>
+          <li>Designed an external RS232 communication port for servers, with modem/flow control and no additional rear I/O mechanical space. The design helped support a $50M server project.</li>
+          <li>Developed C firmware for an EFM8 MCU and Verilog logic for a Lattice MachXO3 FPGA.</li>
+          <li>Won 1st place at Dell's Hackathon with an augmented reality product visualization app (see <a href="projects.html">Projects</a>).</li>
+        </ul></div>
+      </details>
+    </div>
+
+    <div class="t-item reveal" data-emoji="📡">
+      <details>
+        <summary>
+          <h3>RF Hardware Engineer Assistant · Murata Electronics</h3>
+          <span class="meta">Dallas, TX · Aug 2021 – May 2022</span>
+        </summary>
+        <div class="t-body"><ul>
+          <li>Supported schematic design and manufacturing for IoT and Bluetooth/BLE modules and high-density PCBs.</li>
+          <li>Debugged and resolved hardware issues found in battery QA and module-level testing.</li>
+          <li>Pitched and built the Magic Mirror. <a href="post-murata.html">Read my Murata story →</a></li>
+        </ul></div>
+      </details>
+    </div>
+
+    <div class="t-item reveal" data-emoji="🛠️">
+      <details>
+        <summary>
+          <h3>Geek Squad Consultation Agent · Best Buy</h3>
+          <span class="meta">Dallas, TX · Jul 2021 – Aug 2021</span>
+        </summary>
+        <div class="t-body"><ul>
+          <li>Troubleshooting, maintenance, computer optimization, and hardware and software installation.</li>
+          <li>Repaired Windows and macOS laptops, tablets and desktops, plus Android and iOS devices.</li>
+          <li>Delivered high-quality, solution-focused customer service.</li>
+        </ul></div>
+      </details>
+    </div>
+
+  </div>
+
+  <h2 class="reveal">Education</h2>
+  <div class="card reveal"><h3>🎓 University of Texas at Dallas</h3><p>B.S. Electrical Engineering, <strong>Cum Laude</strong> · Dec 2023 · GPA 3.7</p></div>
+
+  <h2 class="reveal">Toolbox</h2>
+  <div class="cards two">
+    <div class="card reveal"><h3>📈 Simulation</h3><p>Ansys HFSS (3D &amp; 3D Layout), SIwave, Q2D, Q3D, HyperLynx; Keysight ADS, SeaSim, Touchstone Master</p></div>
+    <div class="card reveal"><h3>🔬 Analysis</h3><p>S-parameters, TDR, insertion/return loss, crosstalk, eye height/width, BER, corner and sensitivity studies, PAM4/NRZ, Tx/Rx equalization (FFE, CTLE, DFE)</p></div>
+    <div class="card reveal"><h3>🔌 Interfaces</h3><p>PCIe Gen4/5/6, USB4/Thunderbolt, DisplayPort, HDMI, XGMI, DDR5/LPDDR5/SOCAMM, MCIO and card-edge connectors</p></div>
+    <div class="card reveal"><h3>🧩 Layout &amp; automation</h3><p>Cadence Allegro, OrCAD, automated DRC authoring, HFSS scripting (PyAEDT/PyEDB), AI-assisted layout review, JMP</p></div>
+    <div class="card reveal"><h3>💻 Programming</h3><p>Python (data automation and scraping), C, C++, Verilog, MATLAB, Bash, MIPS</p></div>
+    <div class="card reveal"><h3>🧪 Lab &amp; dev boards</h3><p>Raspberry Pi, MSP432, Analog Discovery 2, FPGA (Lattice MachXO3), BLE, RS232, VNA/TDR</p></div>
+  </div>
+
+  <h2 class="reveal">Leadership &amp; honors</h2>
+  <div class="cards two">
+    <div class="card reveal"><h3>🚀 Hackathon Logistics Lead · UT Dallas IEEE</h3><p class="meta">Jun 2020 – Jun 2022</p><p>Co-founded a technical, student-driven hardware hackathon. Attracted 290+ participants and secured $20,000 in sponsorships from 7 companies.</p></div>
+    <div class="card reveal"><h3>🔴 AMD Brand Ambassador</h3><p>Represented AMD's technology and culture through community engagement and networking.</p></div>
+    <div class="card reveal"><h3>🪟 Microsoft Student Ambassador</h3><p>Led technical workshops on campus, bridging industry tools and student engineering projects.</p></div>
+    <div class="card reveal"><h3>🏆 Dell Hackathon 1st Place</h3><p>For an augmented reality product visualization app.</p></div>
+  </div>
+  <ul class="chips reveal" style="margin-top:16px">
+    <li>President's Volunteer Service Award – Gold</li>
+    <li>Chinese Student Association Treasurer</li>
+    <li>Qualcomm Cellular Communication Certified</li>
+    <li>Engineers Without Borders member</li>
+  </ul>
+
+  <div class="cta reveal">
+    <h2>Say hi 👋</h2>
+    <p>Got a project idea, a question, or just want to talk hardware?</p>
+    <div class="btns">
+      <a class="btn solid" href="https://www.linkedin.com/in/willhe10/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/williamhe101" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</div></main>
+
+<footer class="site"><div class="wrap">Built for fun · <span class="mono">eye open ✓</span> · © William He<br><span class="mono" style="opacity:.55;font-size:.78rem">psst: ↑ ↑ ↓ ↓ ← → ← → B A</span></div></footer>
+</body>
+</html>
